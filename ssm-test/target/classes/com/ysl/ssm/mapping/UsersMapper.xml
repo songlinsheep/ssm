@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysl.ssm.dao.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.ysl.ssm.model.Users">
+    <id column="USERACCOUNT" jdbcType="VARCHAR" property="useraccount" />
+    <result column="USERPWD" jdbcType="VARCHAR" property="userpwd" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="ATTENTIONLABELIDS" jdbcType="VARCHAR" property="attentionlabelids" />
+    <result column="USERICON" jdbcType="VARCHAR" property="usericon" />
+    <result column="USERADDRESS" jdbcType="VARCHAR" property="useraddress" />
+    <result column="USEREMPVAL" jdbcType="INTEGER" property="userempval" />
+    <result column="USERBRIEFINFO" jdbcType="VARCHAR" property="userbriefinfo" />
+    <result column="USERREGISTERTIME" jdbcType="TIMESTAMP" property="userregistertime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USERACCOUNT, USERPWD, USERNAME, ATTENTIONLABELIDS, USERICON, USERADDRESS, USEREMPVAL, 
+    USERBRIEFINFO, USERREGISTERTIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tousers
+    where USERACCOUNT = #{useraccount,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tousers
+    where USERACCOUNT = #{useraccount,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ysl.ssm.model.Users">
+    insert into tousers (USERACCOUNT, USERPWD, USERNAME, 
+      ATTENTIONLABELIDS, USERICON, USERADDRESS, 
+      USEREMPVAL, USERBRIEFINFO, USERREGISTERTIME
+      )
+    values (#{useraccount,jdbcType=VARCHAR}, #{userpwd,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{attentionlabelids,jdbcType=VARCHAR}, #{usericon,jdbcType=VARCHAR}, #{useraddress,jdbcType=VARCHAR}, 
+      #{userempval,jdbcType=INTEGER}, #{userbriefinfo,jdbcType=VARCHAR}, #{userregistertime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ysl.ssm.model.Users">
+    insert into tousers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="useraccount != null">
+        USERACCOUNT,
+      </if>
+      <if test="userpwd != null">
+        USERPWD,
+      </if>
+      <if test="username != null">
+        USERNAME,
+      </if>
+      <if test="attentionlabelids != null">
+        ATTENTIONLABELIDS,
+      </if>
+      <if test="usericon != null">
+        USERICON,
+      </if>
+      <if test="useraddress != null">
+        USERADDRESS,
+      </if>
+      <if test="userempval != null">
+        USEREMPVAL,
+      </if>
+      <if test="userbriefinfo != null">
+        USERBRIEFINFO,
+      </if>
+      <if test="userregistertime != null">
+        USERREGISTERTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="useraccount != null">
+        #{useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null">
+        #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="attentionlabelids != null">
+        #{attentionlabelids,jdbcType=VARCHAR},
+      </if>
+      <if test="usericon != null">
+        #{usericon,jdbcType=VARCHAR},
+      </if>
+      <if test="useraddress != null">
+        #{useraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userempval != null">
+        #{userempval,jdbcType=INTEGER},
+      </if>
+      <if test="userbriefinfo != null">
+        #{userbriefinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="userregistertime != null">
+        #{userregistertime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ysl.ssm.model.Users">
+    update tousers
+    <set>
+      <if test="userpwd != null">
+        USERPWD = #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="attentionlabelids != null">
+        ATTENTIONLABELIDS = #{attentionlabelids,jdbcType=VARCHAR},
+      </if>
+      <if test="usericon != null">
+        USERICON = #{usericon,jdbcType=VARCHAR},
+      </if>
+      <if test="useraddress != null">
+        USERADDRESS = #{useraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userempval != null">
+        USEREMPVAL = #{userempval,jdbcType=INTEGER},
+      </if>
+      <if test="userbriefinfo != null">
+        USERBRIEFINFO = #{userbriefinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="userregistertime != null">
+        USERREGISTERTIME = #{userregistertime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where USERACCOUNT = #{useraccount,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ysl.ssm.model.Users">
+    update tousers
+    set USERPWD = #{userpwd,jdbcType=VARCHAR},
+      USERNAME = #{username,jdbcType=VARCHAR},
+      ATTENTIONLABELIDS = #{attentionlabelids,jdbcType=VARCHAR},
+      USERICON = #{usericon,jdbcType=VARCHAR},
+      USERADDRESS = #{useraddress,jdbcType=VARCHAR},
+      USEREMPVAL = #{userempval,jdbcType=INTEGER},
+      USERBRIEFINFO = #{userbriefinfo,jdbcType=VARCHAR},
+      USERREGISTERTIME = #{userregistertime,jdbcType=TIMESTAMP}
+    where USERACCOUNT = #{useraccount,jdbcType=VARCHAR}
+  </update>
+</mapper>
