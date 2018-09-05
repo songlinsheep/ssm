@@ -47,13 +47,6 @@
         <!-- 关闭 abanded 连接时输出错误日志 -->
         <property name="logAbandoned" value="${druid.logAbandoned}" />
     </bean>
-    <!-- 让spring管理sqlSessionFactory -->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <!-- 自动扫描mapping目录, 省掉sqlMapConfig.xml里的手工配置 -->
-        <property name="mapperLocations" value="classpath:com/ysl/ssm/mapping/*.xml" />
-        <!-- 加载mybatis的全局配置文件 -->
-        <property name="configLocation" value="classpath:mybatis/sqlMapConfig.xml" />
-    </bean>
+
 
 </beans>
